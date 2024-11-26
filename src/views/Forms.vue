@@ -30,10 +30,10 @@
         <!-- Additional Fields -->
         <div class="form-row">
           <a-form-item label="Product Commodity Code" class="form-item-half">
-            <a-input placeholder="Enter Commodity Code" />
+            <a-input v-model="productCommodityCode" placeholder="Enter Commodity Code" />
           </a-form-item>
           <a-form-item label="Invoice Value" class="form-item-half">
-            <a-input placeholder="Enter Invoice Value" />
+            <a-input v-model="invoiceValue" placeholder="Enter Invoice Value" />
           </a-form-item>
         </div>
         <div class="form-row">
@@ -43,6 +43,26 @@
               <a-radio value="non-food">Non-Food Product</a-radio>
             </a-radio-group>
           </a-form-item>
+          <a-form-item class="form-item-half" label="Payment Incoterms">
+            <a-select v-model="paymentIncoterms">
+              <a-select-option value="cfr">CFR - Cost and freight Named place of destination</a-select-option>
+              <a-select-option value="cif">CIF - Cost, insurance and freight Named place of destination</a-select-option>
+              <a-select-option value="cip">CIP - Carriage and insurance paid to Named place of destination</a-select-option>
+              <a-select-option value="cpt">CPT - Carriage paid to Named place of destination</a-select-option>
+              <a-select-option value="dap">DAP - Delivered at place Named place of destination</a-select-option>
+              <a-select-option value="dat">DAT - Delivered at terminal Named place of destination</a-select-option>
+              <a-select-option value="ddp">DDP - Delivered duty paid Named place of destination</a-select-option>
+              <a-select-option value="dpu">DPU - DPU</a-select-option>
+              <a-select-option value="exw">EXW - Ex works Named place</a-select-option>
+              <a-select-option value="fas">FAS - Free along ship</a-select-option>
+              <a-select-option value="fca">FCA - Free carrier Named place</a-select-option>
+              <a-select-option value="fob">FOB - Free on board Named port of shipment</a-select-option>
+              <a-select-option value="xxx">XXX - Delivery terms other than those previously listed</a-select-option>
+            </a-select>
+          </a-form-item>
+        </div>
+
+        <div class="form-row">
           <a-form-item label="Temperature Controlled Goods">
             <a-radio-group v-model="temperatureControlled" @change="toggleTemperatureFields">
               <a-radio value="yes">Yes</a-radio>
@@ -223,6 +243,9 @@ export default {
       selectedTransport: "road", // Default selection for transport type
       cargoType: "food", // Default selection for cargo type
       temperatureControlled: "no", // Default value for Temperature Controlled Goods
+      productCommodityCode: '',
+      invoiceValue: '',
+      paymentIncoterms: '',
       minTemperature: "", // Min Temperature value
       maxTemperature: "", // Max Temperature value
       collectionForklift: "no", // Default value for collection forklift requirement
