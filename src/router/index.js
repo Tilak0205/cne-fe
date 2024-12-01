@@ -78,6 +78,18 @@ let routes = [
 		},
 		component: () => import('../views/Sign-Up.vue'),
 	},
+	{
+		path: '/forms/shipmentform',
+		name: 'ShipmentForm',
+		layout: "dashboard",
+		component: () => import('../views/Forms/ShipmentForm.vue'),
+	},
+	{
+		path: '/forms/customclearance',
+		name: 'CustomClearanceForm',
+		layout: "dashboard",
+		component: () => import('../views/Forms/CustomClearanceForm.vue'),
+	},
 ]
 
 // Adding layout property from each route to the meta
